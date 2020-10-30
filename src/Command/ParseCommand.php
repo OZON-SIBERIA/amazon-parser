@@ -35,13 +35,13 @@ class ParseCommand extends Command
             $output->writeln('Title: ' . $crawler->filter('#productTitle')->text());
 
             $output->writeln('Price: ' . $crawler->filter('#priceblock_ourprice')->text());
+            
+            $output->writeln('Image: ' . $crawler->filter('#landingImage')->attr('data-old-hires'));
 
-            $output->writeln('Image: ' . $crawler->filter('#landingImage')->image()->getUri());
-
-            $output->writeln('Merchant: ' . $crawler->filter('#sellerProfileTriggerId')->text());
+            $output->writeln('Merchant: ' . $crawler->filter('.tabular-buybox-text > a')->text());
 
             $output->writeln('Description: ' .
-                implode($nodeValues = $crawler->filter('#feature-bullets > ul > li > span')->each(function (Crawler $node, $i) {
+                implode($nodeValues = $crawler->filter('.a-list-item')->each(function (Crawler $node, $i) {
                     return $node->text();
                 })));
 
