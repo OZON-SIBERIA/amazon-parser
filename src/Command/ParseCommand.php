@@ -35,7 +35,7 @@ class ParseCommand extends Command
             $output->writeln('Title: ' . $crawler->filter('#productTitle')->text());
 
             $output->writeln('Price: ' . $crawler->filter('#priceblock_ourprice')->text());
-            
+
             $output->writeln('Image: ' . $crawler->filter('#landingImage')->attr('data-old-hires'));
 
             $output->writeln('Merchant: ' . $crawler->filter('.tabular-buybox-text > a')->text());
